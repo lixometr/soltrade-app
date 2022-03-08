@@ -10,24 +10,25 @@ import { computed } from 'vue-demi'
 import * as web3 from '@solana/web3.js'
 import { useToast } from '@/helpers/composables/useToast'
 import { ref } from 'vue'
+import { errorHandler } from '@/helpers/errorHandler'
 const { signTransaction } = useWallet()
 
 const walletStore = useWalletStore()
 const collectionStore = useCollectionStore()
 const mainStore = useMainStore()
 const commissionFee = computed(() => {
-  let com = collectionStore.currentFloorPrice * (mainStore.commission / 100)
+  let com = collectionStore.floorPrice * (mainStore.commission / 100)
   return parseFloat(com.toFixed(5))
 })
 const totalPrice = computed(() => {
-  const floorPrice = collectionStore.currentFloorPrice
+  const floorPrice = collectionStore.floorPrice
   const commission = mainStore.commission
   let total = floorPrice + commissionFee.value
   total = +total.toFixed(2)
   return total
 })
 const infoItems = computed(() => {
-  const floorPrice = collectionStore.currentFloorPrice
+  const floorPrice = collectionStore.floorPrice
   const commission = mainStore.commission
 
   return [
@@ -59,7 +60,7 @@ const buy = async () => {
       return
     }
     const publicKey = walletStore.wallet.publicKey.toString() as string
-    const tx = await useApiMagicEden.buyFloor().exec({
+    const tx = await useApiMagicEden.buyFloor({ throw: true }).exec({
       collectionName: collectionStore.collectionName,
       buyer: publicKey,
     })
@@ -89,6 +90,13 @@ const buy = async () => {
     if (err.code === -32003) {
       // maybe not enough funds
     }
+    if (err.isAxiosError) {
+      showToast({
+        type: 'error',
+        text: errorHandler(err),
+      })
+      return
+    }
     if (err.message) {
       showToast({
         type: 'error',
@@ -104,6 +112,12 @@ const buy = async () => {
     isLoading.value = false
   }
 }
+const notEnoughBalance = computed(() => {
+  return walletStore.balance < totalPrice.value
+})
+const isDisabled = computed(() => {
+  return notEnoughBalance.value
+})
 </script>
 
 <template>
@@ -119,9 +133,17 @@ const buy = async () => {
       </div>
     </div>
 
-    <AButton type="green" class="mt-4 w-full" @click="buy" :loading="isLoading">
-      Buy for {{ totalPrice }} SOL</AButton
+    <AButton
+      :disabled="isDisabled"
+      type="green"
+      class="mt-4 w-full"
+      @click="buy"
+      :loading="isLoading"
     >
+      Buy for {{ totalPrice }} SOL
+    </AButton>
+    <div class="text-red mt-1" v-if="notEnoughBalance">Not enough balance</div>
+    <div class="mt-3">Buy from Magic Eden floor price</div>
   </div>
 </template>
 

@@ -3,7 +3,7 @@ import { ICollection } from './../modules/collection/collection.interface'
 import { useApiCollection } from './../api/collection/collection.api'
 import { defineStore } from 'pinia'
 import useSocket from '@/helpers/composables/useSocket/useSocket'
-import { onUnmounted } from 'vue-demi'
+import { onBeforeUnmount, onUnmounted } from 'vue-demi'
 export const useCollectionStore = defineStore('collection', {
   state: () => ({
     collection: {} as ICollection,
@@ -11,7 +11,7 @@ export const useCollectionStore = defineStore('collection', {
     isLoading: false,
   }),
   getters: {
-    currentFloorPrice: (state) => {
+    floorPrice: (state) => {
       if (!state.collection.floor) return 0
       return state.collection.floor[state.collection.floor.length - 1].value
     },
@@ -50,7 +50,7 @@ export const useCollectionStore = defineStore('collection', {
       })
       socket.on('track-collection', this.onCollectionSocket)
 
-      onUnmounted(() => {
+      onBeforeUnmount(() => {
         socket.emit('track-unsubscribe', [this.collectionName])
         socket.off('track-collection', this.onCollectionSocket)
       })

@@ -10,7 +10,8 @@ const activeTab = ref('buy')
 <template>
   <div class="collection-sidebar app-card">
     <div class="sticky top-10">
-      <CollectionSidebarToggler class="mb-5" v-model="activeTab" />
+      <!-- <CollectionSidebarToggler class="mb-5" v-model="activeTab" /> -->
+      <h4 class="mb-2">Buy</h4>
       <CollectionSidebarBuy v-if="activeTab === 'buy'" />
       <CollectionSidebarSell v-if="activeTab === 'sell'" />
     </div>

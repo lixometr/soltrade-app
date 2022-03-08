@@ -31,7 +31,7 @@ const data = computed(() =>
 const chartEl = ref()
 onMounted(() => {
   const chart = createChart(chartEl.value, {
-    height: 500,
+    height: 400,
     timeScale: {
       timeVisible: true,
       secondsVisible: true,

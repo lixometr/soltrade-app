@@ -18,16 +18,33 @@ const items = computed(() => {
     listedPercent = (listedCount / totalItems) * 100
     listedPercent = Math.round(listedPercent)
   }
+  const volumesDifference = collection.value.volumesDifference
+  const listedDifference = collection.value.listedCountDifference
+  const floorDifference = collection.value.floorDifference
   return [
+    {
+      name: 'Floor price',
+      value: collectionStore.floorPrice + ' SOL',
+      difference:
+        floorDifference &&
+        `${floorDifference > 0 ? '+' : ''}${floorDifference}%`,
+      success: floorDifference && floorDifference > 0,
+    },
+    !!collection.value.floorRange24h && {
+      name: 'Floor range 24h',
+      value: `${collection.value.floorRange24h.join('-')} SOL`,
+    },
     !!totalItems && {
       name: 'Total items',
       value: totalItems,
     },
     {
-      name: 'Total listed',
+      name: 'Listed items',
       value: listedCount,
-      difference: '-10%',
-      success: false,
+      difference:
+        listedDifference &&
+        `${listedDifference > 0 ? '+' : ''}${listedDifference}%`,
+      success: listedDifference && listedDifference > 0,
     },
     !!collection.value.totalItems && {
       name: 'Listed %',
@@ -38,14 +55,12 @@ const items = computed(() => {
       value: collectionStore.totalVolume + ' SOL',
     },
     {
-      name: '24h volume',
-      value: '3 000 SOL',
-      difference: '+10%',
-      success: true,
-    },
-    {
-      name: 'Floor range',
-      value: '5-10 SOL',
+      name: 'Volume 24h',
+      value: `${collection.value.volumes24h} SOL`,
+      difference:
+        volumesDifference &&
+        `${volumesDifference > 0 ? '+' : ''}${volumesDifference} %`,
+      success: volumesDifference && volumesDifference > 0,
     },
   ].filter(Boolean) as Array<CollectionStatsItem>
 })

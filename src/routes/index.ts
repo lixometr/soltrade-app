@@ -8,6 +8,7 @@ export default [
   {
     path: '/collection/:collectionName',
     component: () => import('@/views/Collection.vue'),
+    name: 'Collection',
   },
   // {
   //   path: '/kit',

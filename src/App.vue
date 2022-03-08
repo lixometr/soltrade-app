@@ -7,7 +7,7 @@ import AHeader from './components/AHeader/AHeader.vue'
 <template>
   <AHeader />
   <div class="content-wrapper">
-    <router-view> </router-view>
+    <router-view :key="$route.path"> </router-view>
   </div>
   <AModal />
   <AToastContainer />

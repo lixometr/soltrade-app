@@ -8,8 +8,8 @@ import CollectionTrade from '@/components/Collection/CollectionTrade/CollectionT
 const route = useRoute()
 const collectionStore = useCollectionStore()
 collectionStore.$reset()
-collectionStore.init()
 collectionStore.collectionName = route.params.collectionName as string
+collectionStore.init()
 collectionStore.fetchCollection()
 const collection = computed(() => collectionStore.collection)
 </script>

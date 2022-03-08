@@ -4,6 +4,8 @@ export interface TrackCollectionItem {
   value: number
 }
 export interface ICollection {
+  _id: string
+
   type: string
 
   collectionName: string
@@ -26,5 +28,12 @@ export interface ICollection {
 
   listedCount: TrackCollectionItem[]
 
-  priceLayers: any
+  priceLayers?: any
+
+  floorRange24h?: number[]
+
+  floorDifference?: number
+  volumesDifference?: number
+  listedCountDifference?: number
+  volumes24h?: number
 }

@@ -5,8 +5,8 @@ export const errorHandler = (err: AxiosError) => {
     if (response?.status === 401) {
       return 'Login required'
     }
-    if (response?.data && response.data.detail) {
-      return response.data.detail
+    if (response?.data && response.data.message) {
+      return response.data.message
     }
     if (response?.status === 422) {
       return 'Invalid input'

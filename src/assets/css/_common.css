@@ -1,5 +1,5 @@
 body {
-  @apply text-grey-200 bg-grey-800 font-main text-sm leading-[1.5];
+  @apply text-grey-200 bg-grey-800 font-main text-sm leading-[1.5] min-w-[1000px];
 }
 
 .container {

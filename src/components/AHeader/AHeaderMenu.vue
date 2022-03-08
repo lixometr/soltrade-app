@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 const menuItems = [
-  {
-    route: '/popular',
-    name: 'Popular Collections',
-  },
+  // {
+  //   route: '/popular',
+  //   name: 'Popular Collections',
+  // },
   {
     route: '/about',
     name: 'About',

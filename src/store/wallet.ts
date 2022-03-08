@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { useWallet } from 'solana-wallets-vue'
 import * as web3 from '@solana/web3.js'
 import { watch } from 'vue'
+import { watchOnce } from '@vueuse/core'
 export const useWalletStore = defineStore('wallet', {
   state: () => ({
     apiUrl: clusterApiUrl('mainnet-beta'),
@@ -19,7 +20,6 @@ export const useWalletStore = defineStore('wallet', {
   },
   actions: {
     async fetchBalance() {
-      console.log(this.wallet?.publicKey, useWallet().connecting.value)
       if (!this.wallet || !this.wallet.publicKey) {
         this.balance = 0
         return
@@ -33,7 +33,19 @@ export const useWalletStore = defineStore('wallet', {
 })
 
 const walletStore = useWalletStore()
-watch(useWallet().wallet, () => {
-  console.log('change')
-  walletStore.fetchBalance()
-})
+const { connected, connecting } = useWallet()
+const checkBalance = async () => {
+  if (connected.value) {
+    walletStore.fetchBalance()
+  } else if (connecting.value) {
+    watchOnce(connected, () => {
+      if (connected.value) {
+        walletStore.fetchBalance()
+      }
+    })
+  } else {
+    walletStore.balance = 0
+  }
+}
+checkBalance()
+watch(connected, checkBalance)
