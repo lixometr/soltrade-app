@@ -18,7 +18,7 @@ env:
   BUILD_SCRIPT: npm run build
   BUILD_SCRIPT_OUTPUT: dist
   BRANCH_NAME: main
-  VITE_API_HOST: http://api.solatr.io
+  VITE_API_HOST: https://api.solatr.io
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 
