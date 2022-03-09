@@ -33,15 +33,15 @@ onClickOutside(target, () => {
 </script>
 
 <template>
-  <div class="header-search" ref="target">
+  <div ref="target" class="header-search">
     <div class="header-search-input-wrapper">
       <AInput
+        v-model="text"
         class="header-search-input"
         placeholder="Start searching..."
         @keypress.enter="search"
         @input="search"
         @focus="toggle(true)"
-        v-model="text"
       />
       <a
         class="header-search__icon"
@@ -51,20 +51,20 @@ onClickOutside(target, () => {
         <svgSearch width="16" />
       </a>
     </div>
-    <ACustomScrollbar class="header-search-items" v-if="isOpen">
+    <ACustomScrollbar v-if="isOpen" class="header-search-items">
       <template v-if="!items.length && text && !isLoading">
         <div class="flex-center h-14">Nothing found</div>
       </template>
       <template v-else>
         <router-link
+          v-for="item in items"
+          :key="item._id"
           :to="{
             name: 'Collection',
             params: { collectionName: item.collectionName },
           }"
           class="header-search-item"
-          v-for="(item, idx) in items"
-          :key="item._id"
-          @click.native="reset"
+          @click="reset"
         >
           <img
             :src="item.image"

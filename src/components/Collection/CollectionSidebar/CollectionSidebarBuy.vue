@@ -86,7 +86,7 @@ const buy = async () => {
       type: 'success',
       text: 'Transaction was successfully sent! You will receive your NFT in a minute',
     })
-  } catch (err) {
+  } catch (err: any) {
     if (err.code === -32003) {
       // maybe not enough funds
     }
@@ -124,9 +124,9 @@ const isDisabled = computed(() => {
   <div>
     <div class="space-y-2">
       <div
-        class="collection-sidebar__item"
         v-for="(item, idx) in infoItems"
         :key="idx"
+        class="collection-sidebar__item"
       >
         <div class="collection-sidebar__item-name">{{ item.name }}</div>
         <div class="collection-sidebar__item-value">{{ item.value }}</div>
@@ -137,12 +137,12 @@ const isDisabled = computed(() => {
       :disabled="isDisabled"
       type="green"
       class="mt-4 w-full"
-      @click="buy"
       :loading="isLoading"
+      @click="buy"
     >
       Buy for {{ totalPrice }} SOL
     </AButton>
-    <div class="text-red mt-1" v-if="notEnoughBalance">Not enough balance</div>
+    <div v-if="notEnoughBalance" class="text-red mt-1">Not enough balance</div>
     <div class="mt-3">Buy from Magic Eden floor price</div>
   </div>
 </template>

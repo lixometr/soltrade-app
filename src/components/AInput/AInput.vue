@@ -49,7 +49,7 @@ export default {
     >
     <input
       v-model="inputModel"
-      type="text"
+      type="blue"
       class="app-input__el"
       v-bind="$attrs"
     />

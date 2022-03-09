@@ -43,10 +43,10 @@ const links = computed(() => {
         <h2 class="collection-info__title">{{ collection.collectionTitle }}</h2>
         <div class="collection-info__links">
           <a
-            :href="link.link"
-            target="_blank"
             v-for="(link, idx) in links"
             :key="idx"
+            :href="link.link"
+            target="_blank"
           >
             <component :is="link.icon" :width="link.iconSize" />
           </a>

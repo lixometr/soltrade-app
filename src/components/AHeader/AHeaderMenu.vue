@@ -18,10 +18,10 @@ const menuItems = [
 <template>
   <div class="header-menu">
     <router-link
-      class="header-menu__item"
-      :to="item.route"
       v-for="(item, idx) in menuItems"
       :key="idx"
+      class="header-menu__item"
+      :to="item.route"
       exact-active-class="active"
     >
       {{ item.name }}

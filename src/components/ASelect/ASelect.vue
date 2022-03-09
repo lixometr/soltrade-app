@@ -7,7 +7,7 @@ const searchValue = ref('')
 <template>
   <div class="app-select">
     <div class="app-select-input">
-      <input v-model="searchValue" type="text" />
+      <input v-model="searchValue" type="blue" />
     </div>
   </div>
 </template>

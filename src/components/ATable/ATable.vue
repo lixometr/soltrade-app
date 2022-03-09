@@ -14,9 +14,10 @@ defineProps<{
   <div class="app-table">
     <div class="app-table-header">
       <div
+        v-for="(col, idx) in cols"
+        :key="idx"
         class="app-table-header-col"
         :style="{ flexGrow: col.k || 1 }"
-        v-for="(col, idx) in cols"
       >
         <slot :name="'col-' + idx" v-bind="{ col }">
           {{ col.name }}
@@ -24,11 +25,12 @@ defineProps<{
       </div>
     </div>
     <div class="app-table-body">
-      <div class="app-table-row" v-for="(row, idx) in items" :key="idx">
+      <div v-for="(row, idx) in items" :key="idx" class="app-table-row">
         <div
+          v-for="(col, index) in cols"
+          :key="index"
           class="app-table-col"
           :style="{ flexGrow: col.k || 1 }"
-          v-for="(col, idx) in cols"
         >
           <slot :name="col.key" v-bind="{ row }">
             {{ row[col.key] }}

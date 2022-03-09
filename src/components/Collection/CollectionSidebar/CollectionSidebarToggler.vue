@@ -21,7 +21,7 @@ const valueModel = computed({
 
 <template>
   <div class="collection-sidebar-toggler">
-    <AToggler :items="items" v-model="valueModel" />
+    <AToggler v-model="valueModel" :items="items" />
   </div>
 </template>
 

@@ -10,12 +10,12 @@ defineEmits<{ (e: 'update:modelValue', value: string): void }>()
 <template>
   <div class="app-toggler">
     <a
-      href="javascript:void(0)"
-      class="app-toggler__item"
       v-for="(item, idx) in items"
       :key="idx"
-      @click.prevent="$emit('update:modelValue', item.value)"
+      href="javascript:void(0)"
+      class="app-toggler__item"
       :class="{ active: item.value === modelValue }"
+      @click.prevent="$emit('update:modelValue', item.value)"
     >
       {{ item.name }}
     </a>

@@ -45,14 +45,14 @@ const sell = () => {
 
 <template>
   <div>
-    <CollectionSidebarSellItems class="mb-5" v-model="chosenItem" />
-    <AInput label="Price to list" v-model="priceStr" />
+    <CollectionSidebarSellItems v-model="chosenItem" class="mb-5" />
+    <AInput v-model="priceStr" label="Price to list" />
 
     <div class="space-y-2 mt-3">
       <div
-        class="collection-sidebar__item"
         v-for="(item, idx) in infoItems"
         :key="idx"
+        class="collection-sidebar__item"
       >
         <div class="collection-sidebar__item-name">{{ item.name }}</div>
         <div class="collection-sidebar__item-value">{{ item.value }}</div>
@@ -62,8 +62,8 @@ const sell = () => {
     <AButton
       class="w-full h-12 mt-4"
       type="red"
-      @click="sell"
       :disabled="isDisabled"
+      @click="sell"
       >Sell for {{ price }} SOL</AButton
     >
   </div>

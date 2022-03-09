@@ -68,7 +68,7 @@ const items = computed(() => {
 
 <template>
   <div class="app-card collection-stats">
-    <div class="collection-stats-item" v-for="(item, idx) in items" :key="idx">
+    <div v-for="(item, idx) in items" :key="idx" class="collection-stats-item">
       <div class="collection-stats-item__name">{{ item.name }}</div>
       <div class="collection-stats-item__value">
         <span>{{ item.value }}</span>

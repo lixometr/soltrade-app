@@ -20,17 +20,12 @@ const createOrder = async () => {
   <div>
     <div class="flex items-end space-x-3">
       <AInput
+        v-model="collectionName"
         label="Collection Name"
         :showError="false"
-        v-model="collectionName"
       />
-      <AInput label="Limit" class="!w-16" :showError="false" v-model="limit" />
-      <AButton
-        type="primary"
-        text="Create"
-        class="!h-12"
-        @click="createOrder"
-      />
+      <AInput v-model="limit" label="Limit" class="!w-16" :showError="false" />
+      <AButton type="green" text="Create" class="!h-12" @click="createOrder" />
     </div>
   </div>
 </template>

@@ -9,12 +9,12 @@ export interface MagicEdenItem {
   title: string
   content: string
   externalURL: string
-  creators: [[], []]
+  creators: any[]
   // creator fee / 100
   sellerFeeBasisPoints: number
   mintAddress: string
-  attributes: [[Object]]
-  properties: { files: []; creators: [] }
+  attributes: any[]
+  properties: { files: any[]; creators: any[] }
   rarity?: {
     howrare?: { rank: number }
     moonrank?: {
@@ -23,8 +23,8 @@ export interface MagicEdenItem {
   }
   supply: number
   updateAuthority: string
-  primarySaleHappened: 1
-  onChainCollection: {}
+  primarySaleHappened: number
+  onChainCollection: any
   tokenDelegateValid: boolean
   v2: {
     auctionHouseKey: string

@@ -36,21 +36,21 @@ const dropdownValue = ref(1)
         <div>
           <h2 class="mb-3">Buttons</h2>
           <div class="space-x-4 mb-3 flex">
-            <AButton type="primary" text="Primary" />
-            <AButton type="secondary">Secondary</AButton>
-            <AButton type="text">Text</AButton>
+            <AButton type="green" text="Primary" />
+            <AButton type="blue">Secondary</AButton>
+            <AButton type="blue">Text</AButton>
           </div>
           <div class="space-x-4 mb-3 flex">
-            <AButton type="primary" :disabled="true" text="Primary" />
-            <AButton type="secondary" :disabled="true">Secondary</AButton>
-            <AButton type="text" :disabled="true">Text</AButton>
+            <AButton type="green" :disabled="true" text="Primary" />
+            <AButton type="blue" :disabled="true">Secondary</AButton>
+            <AButton type="blue" :disabled="true">Text</AButton>
           </div>
           <div class="space-x-4 flex mb-3">
-            <AButton type="secondary">
+            <AButton type="blue">
               <span>New site</span>
               <svgPlus width="13" />
             </AButton>
-            <AButton type="secondary">
+            <AButton type="blue">
               <svgDownload width="13" />
               <span>Download</span>
             </AButton>

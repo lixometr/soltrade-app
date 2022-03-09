@@ -18,7 +18,7 @@ const rank = computed(() => {
       <div class="collection-sell-item__title">
         {{ item.title }}
       </div>
-      <div class="collection-sell-item__rank" v-if="rank">Rank: {{ rank }}</div>
+      <div v-if="rank" class="collection-sell-item__rank">Rank: {{ rank }}</div>
     </div>
   </div>
 </template>

@@ -59,9 +59,9 @@ useEventListener('keyup', (e: KeyboardEvent) => {
       {{ text }}
     </template>
     <template #actions>
-      <AButton type="text" :text="cancelText" @click="onCancel" />
+      <AButton type="blue" :text="cancelText" @click="onCancel" />
       <AButton
-        type="primary"
+        type="green"
         :text="confirmText"
         class="confirm-modal__button"
         @click="onConfirm"

@@ -17,7 +17,7 @@ const items = computed(() => {
     <ACustomScrollbar
       class="flex flex-wrap -mx-1.5 overflow-auto h-[300px] !pr-1"
     >
-      <div class="w-1/2 p-1.5" v-for="(item, idx) in items" :key="idx">
+      <div v-for="(item, idx) in items" :key="idx" class="w-1/2 p-1.5">
         <CollectionSidebarSellItem
           :item="item"
           :active="item.mintAddress === modelValue"
