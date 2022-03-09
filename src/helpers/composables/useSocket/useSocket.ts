@@ -2,7 +2,7 @@ import { io } from 'socket.io-client'
 const socketUrl =
   import.meta.env.MODE === 'development'
     ? 'http://localhost:85/public'
-    : (import.meta.env.VITE_API_HOST as string)
+    : (import.meta.env.VITE_API_HOST as string) + '/public'
 const socket = io(socketUrl)
 socket.on('connect', () => {
   console.log('connect')
