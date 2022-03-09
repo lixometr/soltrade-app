@@ -1,5 +1,9 @@
 import { io } from 'socket.io-client'
-const socket = io(import.meta.env.VITE_API_HOST + '/public')
+const socketUrl =
+  import.meta.env.MODE === 'development'
+    ? 'http://localhost:85/public'
+    : (import.meta.env.VITE_API_HOST as string)
+const socket = io(socketUrl)
 socket.on('connect', () => {
   console.log('connect')
   //   socket.emit('track-subscribe', ['magicticket', 'bohemia_', 'degods'])
