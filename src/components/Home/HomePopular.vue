@@ -61,7 +61,11 @@ const cols = [
         </router-link>
       </template>
       <template #floorPrice="{ row }">
-        {{ row.floor[row.floor.length - 1].value }} SOL
+        {{
+          row.floor[row.floor.length - 1] &&
+          row.floor[row.floor.length - 1].value
+        }}
+        SOL
       </template>
       <template #floorChange="{ row }">
         <TriangleMarker :success="row.floorDifference > 0">

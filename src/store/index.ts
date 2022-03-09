@@ -6,8 +6,8 @@ export const pinia = createPinia()
 
 export const useMainStore = defineStore('main', {
   state: () => ({
-    twitterLink: '#',
-    discordLink: '#',
+    twitterLink: 'https://twitter.com/solatrio',
+    discordLink: 'https://t.co/81NCIABDwk',
     commission: 1,
     feeCollector: '6oXVEAK7r8t1p4ZRHjpRyKHPiVFLe48Um8jT9tD29or1',
   }),
