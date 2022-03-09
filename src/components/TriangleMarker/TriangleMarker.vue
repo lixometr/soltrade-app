@@ -2,7 +2,9 @@
 import svgTriangleUp from '@/assets/icons/triangle_up.svg?component'
 import svgTriangleDown from '@/assets/icons/triangle_down.svg?component'
 import { computed } from 'vue-demi'
-const props = defineProps<{ success: boolean }>()
+const props = withDefaults(defineProps<{ success: boolean }>(), {
+  success: false,
+})
 const comp = computed(() => {
   if (props.success) {
     return svgTriangleUp

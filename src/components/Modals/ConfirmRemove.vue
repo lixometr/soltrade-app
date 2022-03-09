@@ -72,7 +72,7 @@ useEventListener('keyup', (e: KeyboardEvent) => {
 .confirm-remove {
   @apply w-[420px];
   &__button.app-button {
-    @apply bg-red-light active:bg-red;
+    @apply bg-red active:bg-red;
   }
 }
 </style>

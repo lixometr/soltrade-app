@@ -5,12 +5,14 @@
     "dev": "vite",
     "dev-rebuild": "vite --force",
     "build": "vue-tsc --noEmit && vite build",
+    "build-now": "vite build",
     "preview": "vite preview",
     "lint": "vue-tsc --noEmit && eslint --ext .js,.ts,.vue --ignore-path .gitignore --fix src",
     "format": "prettier .  --write",
     "analyze": "analyze=1 vite build"
   },
   "dependencies": {
+    "@babel/core": "^7.17.5",
     "@solana/wallet-adapter-wallets": "^0.15.5",
     "@solana/web3.js": "^1.36.0",
     "@vueuse/core": "^7.5.3",
