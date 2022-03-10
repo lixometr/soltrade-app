@@ -14,5 +14,8 @@ export const errorHandler = (err: AxiosError) => {
     if (response?.status === 500) {
       return 'Server error'
     }
+    if (response?.status === 502) {
+      return 'Server unavailable. Please try again'
+    }
   }
 }
